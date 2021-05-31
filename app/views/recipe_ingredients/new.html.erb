@@ -1,0 +1,24 @@
+<h1>New Ingredient</h1>
+
+<%= form_for([@recipe_ingredient.recipe, @recipe_ingredient])  do |f| %>
+    <% if params[:recipe_id] %>
+            <%= f.hidden_field :recipe_id %>
+    <% else %>
+            <%= f.label :recipe_id, "select a Recipe" %>
+            <%= f.collection_select :recipe_id, Recipe.all, :id, :name, include_blank: true %><br>
+    <% end %>
+
+        <%= f.label :ingredient_id, "select an ingredient" %>
+        <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, include_blank: true %><br>
+
+        <%= f.fields_for :ingredient, @ingredient do |i| %>
+                <%= i.label :name, "or create a new one: " %>
+                <%= i.text_field :name %>
+            <% end %>
+
+            <br><%= f.label :quantity %>
+            <%= f.number_field :quantity, min:1 %>
+
+            <br><button type=f.submit>Add Ingredient</button>
+
+<% end %>

@@ -1,0 +1,23 @@
+<% if @recipe %>
+
+<h1><%= @recipe.name %></h1>
+
+<h2>Cook Time:</h2> 
+
+<h3> <%= @recipe.cook_time %>:minutes </h3> 
+
+<h2>Directions:</h2>
+
+<h3> <%= @recipe.directions %></h3>
+
+<h3>Ingredients:</h3>
+
+
+<% if current_user.id == @recipe.user_id %>
+<%= link_to "edit recipe", edit_recipe_path(@recipe) %>
+<%= link_to "delete recipe", controller: "recipes", action: "destroy", id: current_user  %><br><br>
+<% else %>
+    <h4>Created by: <%= @recipe.user.name %> </h4>
+<% end %>
+
+<% end %>

@@ -1,0 +1,11 @@
+<h1>Welcome <%= @user.name %></h1><br>
+
+<%= link_to "log out", logout_path, method: :delete %> <br>
+<%= link_to "create recipe", controller: "recipes", action: "new", id: @user  %><br><br>
+
+<h2>Here are all of your recipes</h2>
+
+<% @user.recipes.each do |f| %>
+    <%= link_to f.name, recipe_path(f)  %><br>
+
+    <% end %>
