@@ -1,0 +1,18 @@
+<% if @recipe %>
+    <h1> Ingredients for: <%= @recipe.name %></h1>
+    <br>
+    <%= form_tag delete_recipe_ingredients_path, method: :delete do %>
+        <% if params[:recipe_id] %>
+            <%= hidden_field_tag "recipe_id", params[:recipe_id] %>
+        <% end %>
+            <% @recipe.recipe_ingredients.each do |f| %>
+                <%= check_box_tag "recipe_ingredients[]", f.id %>
+                <%= f.ingredient.name %>
+            <% end %>
+                <br>
+            <% if not_empty @recipe.recipe_ingredients %>
+            <button type=submit_tag class="btn btn-primary">Delete selected</button>
+          <% end %>
+
+   <% end %>
+<% end %>

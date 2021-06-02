@@ -12,10 +12,20 @@
 
 <h3>Ingredients:</h3>
 
+<% if not_empty @recipe.ingredients %>
+<li>Ingredients: <% @recipe.recipe_ingredients.each do |ri| %>
+  <%= ri.ingredient.name %> 
+  (<%= ri.quantity %>)
+<% end %></li>
+<% end %>
 
+<br>
 <% if current_user.id == @recipe.user_id %>
-<%= link_to "edit recipe", edit_recipe_path(@recipe) %>
-<%= link_to "delete recipe", controller: "recipes", action: "destroy", id: current_user  %><br><br>
+    <%= link_to "edit recipe", edit_recipe_path(@recipe) %><br>
+    <%= link_to "delete recipe", @recipe, method: :delete  %><br>
+    <%= link_to "add ingredient", new_recipe_recipe_ingredient_path(@recipe) %>
+    <%= link_to "delete ingredient", recipe_recipe_ingredients_path(@recipe) %>
+ 
 <% else %>
     <h4>Created by: <%= @recipe.user.name %> </h4>
 <% end %>

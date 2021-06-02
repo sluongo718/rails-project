@@ -4,7 +4,8 @@
     Name: <%= f.text_field :name %><br>
     Cook Time: <%= f.number_field :cook_time %><br>
     Directions: <%= f.text_field :directions %><br>
+    Select a category: <%= f.collection_select(:category_ids, Category.all, :id, :name) %> <br>
 
-    <%= f.submit %>
+    <button type=f.submit >Submit</button>
 
-    <% end %>
+<% end %>

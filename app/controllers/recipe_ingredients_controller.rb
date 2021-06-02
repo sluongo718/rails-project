@@ -44,6 +44,15 @@ class RecipeIngredientsController < ApplicationController
         recipe
     end
 
+    def delete
+        if params[:recipe_ingredients]
+            
+            RecipeIngredient.destroy(params[:recipe_ingredients])
+            @recipe = params[:recipe_id]
+            redirect_to recipe_path(@recipe)
+        end
+    end
+
     private 
 
     def recipe
