@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   post '/login' => "sessions#create"
 
   delete "/logout" => "sessions#destroy"
+
+  get 'most_popular_user' => 'users#most_popular_user'
  
 end

@@ -19,6 +19,12 @@
 <% end %></li>
 <% end %>
 
+<% if not_empty @recipe.categories %>
+<li>Categories: <% @recipe.categories.each do |category| %>
+  <%= category.name %>
+<% end %></li>
+<% end %>
+
 <br>
 <% if current_user.id == @recipe.user_id %>
     <%= link_to "edit recipe", edit_recipe_path(@recipe) %><br>

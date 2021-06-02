@@ -4,8 +4,9 @@
     Name: <%= f.text_field :name %><br>
     Cook Time: <%= f.number_field :cook_time %><br>
     Directions: <%= f.text_field :directions %><br>
-    Select a category: <%= f.collection_select(:category_ids, Category.all, :id, :name) %> <br>
+    <p>Select a category:</p>
+    <%= f.collection_select(:category_ids, Category.all, :id, :name, {include_blank: 'Select a category'} ) %>
 
     <button type=f.submit >Submit</button>
-
+   
 <% end %>

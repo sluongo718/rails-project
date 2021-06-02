@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
     def create 
         @category = Category.create(category_params)
         if @category.save
-            binding.pry
+         
             redirect_to user_path(current_user)
         else
             render :new

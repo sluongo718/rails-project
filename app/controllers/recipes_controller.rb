@@ -15,12 +15,13 @@ class RecipesController < ApplicationController
         if @recipe.save
             redirect_to recipes_path(@recipe)
         else
+            
             render :new
         end
     end
 
     def show
-      
+    
         @recipe = Recipe.find_by(id: params[:id])
     end
 
@@ -45,7 +46,7 @@ class RecipesController < ApplicationController
     private
 
     def recipe_params 
-        params.require(:recipe).permit(:name, :cook_time, :directions)
+        params.require(:recipe).permit(:name, :cook_time, :directions, category_ids: [])
     end 
 
     def current_recipe
