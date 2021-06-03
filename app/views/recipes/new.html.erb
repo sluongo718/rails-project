@@ -1,5 +1,9 @@
 <h1>Create a Recipe!</h1>
 
+<% if flash[:error] %>
+    <%= flash[:error] %>
+<% end %>
+
 <%= form_for @recipe do |f| %>
     Name: <%= f.text_field :name %><br>
     Cook Time: <%= f.number_field :cook_time %><br>

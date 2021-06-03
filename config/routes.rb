@@ -15,15 +15,21 @@ Rails.application.routes.draw do
   end
 
   root "static_pages#welcome"
+
   resources :users
+
   get "/signup" => "users#new"
   post "/signup" => "users#create"
 
   get "/login" => "sessions#new"
   post '/login' => "sessions#create"
 
+  get '/auth/github/callback' => 'sessions#create'
+
   delete "/logout" => "sessions#destroy"
 
   get 'most_popular_user' => 'users#most_popular_user'
+
+ 
  
 end

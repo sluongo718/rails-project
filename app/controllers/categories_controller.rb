@@ -6,11 +6,13 @@ class CategoriesController < ApplicationController
     end
 
     def create 
-        @category = Category.create(category_params)
+      
+        @category = Category.find_or_create_by(category_params)
         if @category.save
          
             redirect_to user_path(current_user)
         else
+            flash[:error] = "Please fill in a category"
             render :new
         end
     end

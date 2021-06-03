@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
         if @recipe.save
             redirect_to recipes_path(@recipe)
         else
-            
+            flash[:error] = "please fill in all fields"
             render :new
         end
     end
