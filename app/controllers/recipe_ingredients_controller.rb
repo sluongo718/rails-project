@@ -17,6 +17,7 @@ class RecipeIngredientsController < ApplicationController
     def create
           
         if selecting_and_creating_ingredient
+          
             flash[:error] = "Please, select an ingredient or create a new one, not both."
             @recipe_ingredient = RecipeIngredient.new
             @recipe_ingredient.recipe_id = params[:recipe_id]
@@ -27,7 +28,7 @@ class RecipeIngredientsController < ApplicationController
         @recipe_ingredient = RecipeIngredient.create(recipe_ingredient_params)
 
         if create_ingredient
-            
+           
             Ingredient.create(recipe_ingredient_params[:ingredient_attributes])
         else
             @recipe_ingredient.ingredient = Ingredient.find_by_id(recipe_ingredient_params[:ingredient_id])
@@ -36,7 +37,7 @@ class RecipeIngredientsController < ApplicationController
         if @recipe_ingredient.save
             redirect_to recipe_path(@recipe_ingredient.recipe_id)
         else
-      
+            flash[:error] = "looks like this ingredient already is in this recipe"
             render :new
         end
 
