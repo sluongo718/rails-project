@@ -31,6 +31,7 @@
     <%= link_to "delete recipe", @recipe, method: :delete  %><br>
     <%= link_to "add ingredient", new_recipe_recipe_ingredient_path(@recipe) %>
     <%= link_to "delete ingredient", recipe_recipe_ingredients_path(@recipe) %>
+    <%= link_to "see all ingredients for this recipe", recipe_recipe_ingredients_path(@recipe) %>
  
 <% else %>
     <h4>Created by: <%= @recipe.user.name %> </h4>

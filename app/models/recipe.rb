@@ -12,4 +12,8 @@ class Recipe < ApplicationRecord
     validates :name, presence: true
     validates :cook_time, numericality: {only_integer: true}
     validates :directions, presence: true
+
+    def self.by_name(name)
+        where(['name LIKE ?', "%#{name}%"])
+      end
 end

@@ -1,6 +1,11 @@
 <h1>Here are all the recipes</h1>
+<%= form_tag(recipes_path,  method: "get") do %>
+    <p>Search</p>
+    <%= text_field_tag :name, params[:name] %>
+    <%= submit_tag("search") %>
+<% end %>
 
 <% @recipes.each do |f| %> 
     <%= link_to f.name, recipe_path(f) %><br>
 
-    <% end %>
+<% end %>

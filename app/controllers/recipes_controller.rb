@@ -2,8 +2,13 @@ class RecipesController < ApplicationController
     before_action :require_login
     before_action :current_recipe, except: [:index, :new, :create,]
 
-    def index 
-        @recipes = Recipe.all
+    def index
+        
+        if !params[:name].blank?
+            @recipes = Recipe.by_name(params[:name])
+        else
+            @recipes = Recipe.all
+        end
     end
 
     def new 
@@ -47,6 +52,7 @@ class RecipesController < ApplicationController
     private
 
     def recipe_params 
+       
         params.require(:recipe).permit(:name, :cook_time, :directions, category_ids: [])
     end 
 
