@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :recipe_categories
   resources :categories
   resources :ingredients
- 
+  resources :users
 
   resources :recipes do 
     resources :recipe_ingredients
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   root "static_pages#welcome"
 
-  resources :users
+  
 
   get "/signup" => "users#new"
   post "/signup" => "users#create"

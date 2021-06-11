@@ -5,6 +5,7 @@ class RecipeIngredientsController < ApplicationController
         if recipe 
            
         @recipe_ingredient = @recipe.recipe_ingredients.new 
+
         else
             @recipe_ingredient = RecipeIngredient.new
         end
@@ -16,10 +17,11 @@ class RecipeIngredientsController < ApplicationController
     def create
           
         if selecting_and_creating_ingredient
+            flash[:error] = "Please, select an ingredient or create a new one, not both."
             @recipe_ingredient = RecipeIngredient.new
             @recipe_ingredient.recipe_id = params[:recipe_id]
             @ingredient = Ingredient.new 
-            render :new
+            render :new and return
         end
 
         @recipe_ingredient = RecipeIngredient.create(recipe_ingredient_params)
@@ -38,7 +40,7 @@ class RecipeIngredientsController < ApplicationController
             render :new
         end
 
-
+     
     end
 
     def index 

@@ -1,5 +1,9 @@
 <h1>New Ingredient</h1>
 
+<% if flash[:error] %>
+    <%= flash[:error] %>
+<% end %>
+
 <%= form_for([@recipe_ingredient.recipe, @recipe_ingredient])  do |f| %>
     <% if params[:recipe_id] %>
             <%= f.hidden_field :recipe_id %>

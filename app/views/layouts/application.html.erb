@@ -12,7 +12,14 @@
 
   <body>
 
+  <% if current_user %>
+  <br>
+    <%= link_to "Create recipe", new_recipe_path %>
+    <%= link_to "All recipes", recipes_path %>
+    <%= link_to "home page", user_path(current_user) %>
  
+
+  <% end %>
 
     <%= yield %>
   </body>

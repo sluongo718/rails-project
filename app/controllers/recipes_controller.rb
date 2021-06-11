@@ -18,6 +18,7 @@ class RecipesController < ApplicationController
             flash[:error] = "please fill in all fields"
             render :new
         end
+     
     end
 
     def show
